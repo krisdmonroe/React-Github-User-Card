@@ -50,11 +50,12 @@ class GithubList extends React.Component {
             key={github.id}
             name={github.name}
             login={github.login}
-            location={github.locaiton}
+            location={github.location}
             profile={github.html_url}
             followers={github.followers}
             following={github.following}
-            bio={github.bio}
+            bio={github.bio} 
+            url={github.url}
           />
       ))}
       <div className="character-list">
@@ -64,11 +65,12 @@ class GithubList extends React.Component {
             key={follow.id}
             name={follow.login}
             login={follow.login}
-            location={follow.locaiton}
+            location={follow.location}
             profile={follow.html_url}
             followers={follow.followers}
             following={follow.following}
             bio={follow.bio}
+            url={follow.url}
           />
           
       ))}
