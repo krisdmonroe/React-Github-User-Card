@@ -22,18 +22,22 @@ class GithubList extends React.Component {
     //axios call for followers and set that to followers state
     axios
     .get('https:api.github.com/users/krisdmonroe/followers')
-    .then(response => {
-    response.data.forEach(user => {
-        axios
-        .get(`https://api.github.com/users/${user.login}`)
-})
-.then(res => {
-        this.setState({
-            followers:res.data   
+    .then(res => {
+        res.data.forEach(user => {
+            axios
+            .get(`https:api.github.com/users/${user.login}`)
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                  followers: [...this.state.followers, res.data]
+                });
+        })
     })
+    console.log('this is followers', this.state.followers)
 })
 .catch(err => console.log(err))
 };
+
 
 
 
@@ -58,7 +62,7 @@ class GithubList extends React.Component {
      <FollowerCards
             image={follow.avatar_url}
             key={follow.id}
-            name={follow.name}
+            name={follow.login}
             login={follow.login}
             location={follow.locaiton}
             profile={follow.html_url}
